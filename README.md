@@ -1,3 +1,9 @@
+## Примітка
+
+На жаль, не вдалося зробити окремі коміти для кожного завдання, оскільки спочатку не було повного розуміння взаємозв’язку між ними.  
+Тому всі зміни оформлені одним комітом.  
+У звичайних робочих умовах я дотримуюсь практики поетапних комітів для кожної задачі.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

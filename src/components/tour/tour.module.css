@@ -1,0 +1,126 @@
+/* ===== Results container ===== */
+.resultsContainer {
+    width: 700px;
+    padding: 25px;
+    margin: 0 auto;
+}
+
+.resultsTitle {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.noResults {
+    text-align: center;
+    margin-top: 50px;
+    color: #777;
+}
+
+/* ===== Card grid ===== */
+.resultsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* ===== Tour card ===== */
+.card {
+    border: 1px solid #e2e2e2;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    padding: 12px 14px 16px;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ===== content ===== */
+.content {
+    padding: 14px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hotelName {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #222;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.flag {
+    font-size: 1.2rem;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 4px;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #000;
+    margin-top: 8px;
+}
+
+.link {
+    color: #0066cc;
+    font-size: 0.95rem;
+    margin-top: 6px;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 750px) {
+    .resultsContainer {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .resultsGrid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .resultsGrid {
+        grid-template-columns: 1fr;
+    }
+}
