@@ -4,9 +4,10 @@ import styles from '../../components/search/search.module.css';
 
 interface SearchStatusDisplayProps {
     searchState: SearchState;
+    cancelSearch: (token: string) => void;
 }
 
-const SearchStatusDisplay: React.FC<SearchStatusDisplayProps> = ({ searchState }) => {
+const SearchStatusDisplay: React.FC<SearchStatusDisplayProps> = ({ searchState, cancelSearch }) => {
     const renderStatusText = () => {
         switch (searchState.status) {
             case 'idle':
@@ -53,7 +54,10 @@ const SearchStatusDisplay: React.FC<SearchStatusDisplayProps> = ({ searchState }
             {searchState.status !== 'success' && renderStatusText()}
 
             {showCancelButton && (
-                <button onClick={() => searchState.token} className={styles.cancelButton}>
+                <button
+                    onClick={() => searchState.token && cancelSearch(searchState.token)}
+                    className={styles.cancelButton}
+                >
                     Скасувати Пошук
                 </button>
             )}

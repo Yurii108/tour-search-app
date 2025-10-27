@@ -180,11 +180,32 @@ export const useTourSearch = () => {
     }, [fetchResults]);
 
 
+    const cancelSearch = useCallback(async (token: string) => {
+        if (!token) return;
 
+        isCanceledRef.current = true;
+        clearTimeoutByToken(token);
+        activeSearchRef.current = null;
+
+        try {
+            await stopSearchPrices(token);
+        } catch (error) {
+            console.warn(`Помилка при спробі зупинити пошук на сервері (${token}).`);
+        }
+
+        setSearchState((prev) => ({
+            ...prev,
+            status: 'cancelled',
+            token,
+            error: 'Пошук скасовано користувачем.'
+        }));
+    }, []);
 
 
     const startSearch = useCallback(async (countryId: string) => {
-
+        if (activeSearchRef.current?.token) {
+            await cancelSearch(activeSearchRef.current.token);
+        }
 
         setSearchState({ status: 'loading', token: null, tourResults: null, hotelsMap: null, error: null });
         isCanceledRef.current = false;
@@ -203,11 +224,12 @@ export const useTourSearch = () => {
         } catch (error) {
             setSearchState({ status: 'error', token: null, tourResults: null, hotelsMap: null, error: 'Не вдалося розпочати пошук.' });
         }
-    }, [scheduleNextAttempt]);
+    }, [cancelSearch, scheduleNextAttempt]);
 
 
     return {
         searchState,
         startSearch,
+        cancelSearch,
     };
 };

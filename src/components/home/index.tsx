@@ -8,11 +8,16 @@ import SearchStatusDisplay from '../search/search-status-display';
 import styles from './styles.module.css';
 
 export default function Home() {
-    const { searchState, startSearch } = useTourSearch();
+    const { searchState, startSearch, cancelSearch } = useTourSearch();
 
     const handleSearch = (countryId: string) => {
         startSearch(countryId);
     };
+
+    const isSearchActive =
+        searchState.status === 'loading' ||
+        searchState.status === 'waiting' ||
+        searchState.status === 'fetching_hotels';
 
     const renderResultsOrEmptyState = () => {
         if (
@@ -39,8 +44,8 @@ export default function Home() {
 
     return (
         <>
-            <SearchForm onSearch={handleSearch} />
-            <SearchStatusDisplay searchState={searchState} />
+            <SearchForm onSearch={handleSearch} isSearchActive={isSearchActive} />
+            <SearchStatusDisplay searchState={searchState} cancelSearch={cancelSearch} />
 
             {renderResultsOrEmptyState()}
         </>

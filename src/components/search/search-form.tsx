@@ -7,9 +7,10 @@ import Button from '../ui/button';
 
 interface SearchFormProps {
     onSearch: (countryId: string) => void;
+    isSearchActive: boolean;
 }
 
-const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
+const SearchForm: React.FC<SearchFormProps> = ({ onSearch, isSearchActive }) => {
     const [selectedGeo, setSelectedGeo] = useState<GeoEntity | null>(null);
 
     const countryIdToSearch = selectedGeo ? String(selectedGeo.id) : null;
@@ -21,12 +22,14 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!countryIdToSearch) {
+        if (isSearchActive || !countryIdToSearch) {
             return;
         }
 
         onSearch(countryIdToSearch);
     };
+
+    const buttonDisabled = !countryIdToSearch || isSearchActive;
 
     return (
         <div className={styles.container}>
@@ -39,7 +42,9 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
                     />
                 </label>
 
-                <Button type="submit">Знайти</Button>
+                <Button type="submit" disabled={buttonDisabled}>
+                    {isSearchActive ? 'Пошук...' : 'Знайти'}
+                </Button>
             </form>
         </div>
     );
