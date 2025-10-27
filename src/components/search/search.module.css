@@ -1,0 +1,124 @@
+.wrapper {
+    position: relative;
+}
+
+.container {
+    width: 250px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+    margin: 0 auto;
+    color: black;
+}
+
+.title {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    background: white;
+    color: black;
+}
+
+.list {
+    position: absolute;
+    width: 100%;
+    border: 1px solid #ccc;
+    z-index: 10;
+    background: white;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    background-color: white;
+}
+
+.noResults {
+    padding: 10px;
+    text-align: center;
+}
+
+.button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    background: #3b82f6;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.button:hover {
+    background: #2563eb;
+}
+
+.buttonClear {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: #4e4e4e;
+    font-size: 1em;
+}
+
+.statusContainer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+}
+
+.cancelButton {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #dc3545; /* Червоний колір для скасування */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cancelButton:hover {
+    background: #c82333;
+}
+
+.statusText {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.errorText {
+    color: #dc3545;
+}
+
+.cancelledText {
+    color: #ffc107;
+}
